@@ -1,4 +1,3 @@
-import javax.xml.namespace.QName;
 
 public class TV {
     private int
@@ -11,7 +10,7 @@ public class TV {
     public TV() {
         isOn = false;
         channelNumber = 1;
-        volume = 20;
+        volume = 10;
         isMuted = false;
     }
 
