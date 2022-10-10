@@ -1,4 +1,3 @@
-import java.util.Objects;
 import java.util.Scanner;
 
 public class Main {
@@ -14,22 +13,7 @@ public class Main {
         TV tv = new TV();
 
         String control;
-
-        while (!tv.isOn()) {
-            clearScreen();
-            tv.powerState();
-
-            remote.printOptions();
-            control = input.nextLine();
-
-            if (Objects.equals(control, "p")) {
-                tv.power();
-                //remote.power();
-                // Clearing Screen to act like when the TV turns on
-                clearScreen();
-                tv.powerState();
-            }
-        }
+        clearScreen();
 
         do {
             remote.printOptions();
@@ -39,46 +23,41 @@ public class Main {
             // Determine Actions Based on Input
             switch (control) {
                 case "p":
-                    tv.power();
-                    //remote.power();
+                    remote.power(tv);
                     break;
                 case "c":
-                    System.out.print("What channel would you like to switch too? ");
-                    tv.changeChannelNumber(input.nextInt());
-                    //remote.changeChannel((input.nextInt()));
+                    System.out.print("Channel ");
+                    remote.changeChannel(tv, input.nextLine());
                     break;
                 case "^":
-                    tv.channelUp();
-                    //remote.channelUp();
+                    remote.channelUp(tv);
                     break;
                 case "v":
-                    tv.channelDown();
-                    //remote.channelDown();
+                    remote.channelDown(tv);
                     break;
                 case "b":
-                    tv.flashback();
-                    //remote.flashback();
+                    remote.flashback(tv);
                     break;
                 case "+":
-                    tv.volumeUp();
-                    //remote.volumeUp();
+                    remote.volumeUp(tv);
                     break;
                 case "-":
-                    tv.volumeDown();
-                    //remote.volumeDown();
+                    remote.volumeDown(tv);
                     break;
                 case "m":
-                    tv.mute();
-                    //remote.mute();
+                    remote.mute(tv);
+                    break;
+                case "x":
                     break;
                 default:
+                    System.out.println("Nothing Happened!");
                     System.out.println();
-                    System.out.println("Selected Option Is Invalid!");
-                    System.out.println();
+                    break;
             }
-        } while (tv.isOn());
 
-        tv.powerState();
+        } while (!control.equals("x"));
+
+        System.out.println();
     }
 }
 

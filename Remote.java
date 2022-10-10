@@ -1,15 +1,5 @@
 
 public class Remote {
-    private enum Controls {
-        POWER,
-        CHANGE_CHANNEL,
-        FLASHBACK,
-        CHANNEL_UP,
-        CHANNEL_DOWN,
-        VOLUME_UP,
-        VOLUME_DOWN,
-        MUTE,
-    }
 
     // constructor:
     public Remote() { }
@@ -25,16 +15,17 @@ public class Remote {
         System.out.println("- - Volume Down");
         System.out.println("m - Mute/Unmute");
         System.out.println();
-        System.out.print("Option: ");
+        System.out.println("x - exit program");
+        System.out.println();
     }
-    /*
-    public void power() { TV.power(); }
-    public void changeChannel(int channelNum) { TV.changeChannelNumber(channelNum); }
-    public void channelUp() { TV.channelUp(); }
-    public void channelDown() { TV.channelDown(); }
-    public void flashback() { TV.flashback(); }
-    public void volumeUp() { TV.volumeUp(); }
-    public void volumeDown() { TV.volumeDown(); }
-    public void mute() { TV.mute(); }
-    */
+
+    public void power(TV tv) { tv.power(); }
+    public void changeChannel(TV tv, String channelNum) { tv.changeChannelNumber(channelNum); }
+    public void channelUp(TV tv) { tv.channelUp(); }
+    public void channelDown(TV tv) { tv.channelDown(); }
+    public void flashback(TV tv) { tv.flashback(); }
+    public void volumeUp(TV tv) { tv.volumeUp(); }
+    public void volumeDown(TV tv) { tv.volumeDown(); }
+    public void mute(TV tv) { tv.mute(); }
+
 }
