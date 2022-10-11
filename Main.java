@@ -26,7 +26,7 @@ public class Main {
                     remote.power(tv);
                     break;
                 case "c":
-                    System.out.print("Channel ");
+                    System.out.print("Channel: ");
                     remote.changeChannel(tv, input.nextLine());
                     break;
                 case "^":
@@ -50,6 +50,7 @@ public class Main {
                 case "x":
                     break;
                 default:
+                    System.out.println();
                     System.out.println("Nothing Happened!");
                     System.out.println();
                     break;
@@ -57,7 +58,6 @@ public class Main {
 
         } while (!control.equals("x"));
 
-        System.out.println();
     }
 }
 

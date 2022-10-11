@@ -23,7 +23,7 @@ public class TV {
         if (this.isOn()) {
             System.out.println("TV is On!");
         } else {
-            System.out.println("Tv is Off!");
+            System.out.println("TV is Off!");
         }
         System.out.println();
     }
@@ -33,17 +33,18 @@ public class TV {
             int channel = 0;
             try {
                 channel = Integer.parseInt(_channelNumber);
-            } catch (NumberFormatException e) {
-                e.printStackTrace();
+            } catch (Exception ignore){
+
             }
-            if (this.channelNumber >= 1 && this.channelNumber <= 9999) {
+
+            if (channel >= 1 && channel <= 9999) {
                 this.flashbackChannel = this.channelNumber;
                 this.channelNumber = channel;
                 System.out.println();
                 System.out.println("Channel number: " + this.channelNumber);
             } else {
                 System.out.println();
-                System.out.println("Channel number not found!");
+                System.out.println("Invalid Channel!");
             }
         } else {
             System.out.println("Nothing Happened!");
@@ -93,12 +94,9 @@ public class TV {
                 this.previousVolume = this.volume;
                 this.volume = 0;
                 this.isMuted = true;
-                System.out.println("TV is muted");
             } else {
                 this.volume = this.previousVolume;
                 this.isMuted = false;
-                System.out.println("TV is unmuted");
-
             }
             System.out.println("Volume: " + this.volume);
         } else {
