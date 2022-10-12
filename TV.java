@@ -6,8 +6,11 @@ public class TV {
     private boolean
             isOn, isMuted;
 
+    private String uid;
+
     // Constructor
-    public TV() {
+    public TV(String _uid) {
+        uid = _uid;
         isOn = false;
         channelNumber = 1;
         volume = 10;
@@ -16,6 +19,7 @@ public class TV {
 
     public boolean isMuted() { return this.isMuted; }
     public boolean isOn() { return this.isOn; }
+    public String getUID() { return this.uid; }
 
     public void power() {
         this.isOn = !this.isOn();
@@ -33,13 +37,13 @@ public class TV {
             int channel = 0;
             try {
                 channel = Integer.parseInt(_channelNumber);
-            } catch (Exception ignore){
-
-            }
+            } catch (Exception ignore){ }
 
             if (channel >= 1 && channel <= 9999) {
-                this.flashbackChannel = this.channelNumber;
-                this.channelNumber = channel;
+                if (channel != this.channelNumber) {
+                    this.flashbackChannel = this.channelNumber;
+                    this.channelNumber = channel;
+                }
                 System.out.println();
                 System.out.println("Channel number: " + this.channelNumber);
             } else {
@@ -106,6 +110,10 @@ public class TV {
     }
     public void volumeUp() {
         if (this.isOn()) {
+            if (this.isMuted()) {
+                this.isMuted = false;
+                this.volume = this.previousVolume;
+            }
             if (this.volume < 40)
                 this.volume++;
             System.out.println("Volume: " + this.volume);
@@ -116,6 +124,10 @@ public class TV {
     }
     public void volumeDown() {
         if (this.isOn()) {
+            if (this.isMuted()) {
+                this.isMuted = false;
+                this.volume = this.previousVolume;
+            }
             if (this.volume > 0)
                 this.volume--;
             System.out.println("Volume: " + this.volume);

@@ -9,13 +9,15 @@ public class Main {
 
     public static void main(String[] args ) {
         Scanner input = new Scanner(System.in);
-        Remote remote = new Remote();
-        TV tv = new TV();
+        Remote remote = new Remote("ax7lb");
+        TV tv = new TV("ax7lb");
 
         String control;
         clearScreen();
 
         do {
+            System.out.println("---------------------");
+            System.out.println();
             remote.printOptions();
             control = input.nextLine();
             System.out.println();
@@ -23,29 +25,29 @@ public class Main {
             // Determine Actions Based on Input
             switch (control) {
                 case "p":
-                    remote.power(tv);
+                    remote.power(tv, tv.getUID());
                     break;
                 case "c":
                     System.out.print("Channel: ");
-                    remote.changeChannel(tv, input.nextLine());
+                    remote.changeChannel(tv, tv.getUID(), input.nextLine());
                     break;
                 case "^":
-                    remote.channelUp(tv);
+                    remote.channelUp(tv, tv.getUID());
                     break;
                 case "v":
-                    remote.channelDown(tv);
+                    remote.channelDown(tv, tv.getUID());
                     break;
                 case "b":
-                    remote.flashback(tv);
+                    remote.flashback(tv, tv.getUID());
                     break;
                 case "+":
-                    remote.volumeUp(tv);
+                    remote.volumeUp(tv, tv.getUID());
                     break;
                 case "-":
-                    remote.volumeDown(tv);
+                    remote.volumeDown(tv, tv.getUID());
                     break;
                 case "m":
-                    remote.mute(tv);
+                    remote.mute(tv, tv.getUID());
                     break;
                 case "x":
                     break;
